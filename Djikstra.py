@@ -1,5 +1,6 @@
 
 import sys
+#use python2 djikstra.py in terminal
 class Graph():
 	def __init__(self, vertices):
 		self.V = vertices
