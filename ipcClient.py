@@ -1,12 +1,15 @@
-from multiprocessing.connection import Client
+import os
+import sys
 
-address = ('localhost', 6000)
-conn = Client(address, authkey='secret password')
-conn.send('hello')
-conn.send('world')
-conn.send('close')
-x=conn.recv()
-print x
-# can also send arbitrary objects:
-# conn.send(['a', 2.5, None, int, sum])
-conn.close()
+path = "/home/saransh/Desktop/port10.txt"
+path2= "/home/saransh/Desktop/port11.txt"
+
+
+fifo = open(path, "w")
+fifo.write("fifo based ipc!")
+fifo.close()
+os.mkfifo(path2)
+fifo2=open(path2,"r")
+for l in fifo2:
+    print l
+fifo2.close()
